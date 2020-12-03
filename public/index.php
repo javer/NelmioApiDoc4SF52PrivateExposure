@@ -7,6 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 require dirname(__DIR__).'/vendor/autoload.php';
 
+if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css)$/', $_SERVER['REQUEST_URI'])) {
+    return false;
+}
+
 (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 
 if ($_SERVER['APP_DEBUG']) {
